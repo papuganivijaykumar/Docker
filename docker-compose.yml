@@ -11,8 +11,16 @@ services:
     build: ./instamart/
     ports:
       - "8081:80"
+    volumes:
+      - "instamart-volume"
   help:
     container_name: help-cont
     build: ./help/
     ports:
       - "8082:80"
+    networks:
+      - "help-network"
+
+networks:
+  help-network:
+    driver: bridge
